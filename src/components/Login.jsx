@@ -5,13 +5,11 @@ import './Auth.css'
 const Login = () => {
   const [email, setemail] = useState("")
   const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError("")
     setLoading(true)
 
     try {
@@ -27,10 +25,10 @@ const Login = () => {
         localStorage.setItem("userId", data.user.id)
         navigate("/home")
       } else {
-        setError(data.message || "Login failed")
+        alert(data.message || "Login failed")
       }
     } catch (err) {
-      setError("Something went wrong. Please try again.")
+      alert("Something went wrong. Please try again.")
     } finally {
       setLoading(false)
     }
@@ -42,7 +40,7 @@ const Login = () => {
         <h1 className="auth-card__title">Login</h1>
 
         <form onSubmit={handleSubmit} className="auth-form">
-          {error && <p className="alert-error">{error}</p>}
+
 
           <div className="form-group">
             <label className="form-group__label" htmlFor="email">Email</label>

@@ -6,13 +6,11 @@ const Register = () => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError("")
     setLoading(true)
 
     try {
@@ -28,10 +26,10 @@ const Register = () => {
         localStorage.setItem("userId", data.user.id)
         navigate("/home")
       } else {
-        setError(data.message || "Registration failed")
+        alert(data.message || "Registration failed")
       }
     } catch (err) {
-      setError("Something went wrong. Please try again.")
+      alert("Something went wrong. Please try again.")
     } finally {
       setLoading(false)
     }
@@ -43,7 +41,7 @@ const Register = () => {
         <h1 className="auth-card__title">Register</h1>
 
         <form onSubmit={handleSubmit} className="auth-form">
-          {error && <p className="alert-error">{error}</p>}
+
 
           <div className="form-group">
             <label className="form-group__label" htmlFor="username">Username</label>
