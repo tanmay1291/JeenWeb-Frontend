@@ -23,7 +23,7 @@ const Home = () => {
 
   const fetchProfiles = async () => {
     try {
-      const response = await fetch(`${process.env.BASE_URL}/api/profile/${userId}`)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/profile/${userId}`)
       const data = await response.json()
       if (data.success) {
         setProfiles(data.profiles)
@@ -47,7 +47,7 @@ const Home = () => {
     setLoading(true)
 
     try {
-      const response = await fetch(`${process.env.BASE_URL}/api/profile`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/profile`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
