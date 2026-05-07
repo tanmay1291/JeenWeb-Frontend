@@ -84,12 +84,12 @@ const Home = () => {
           <div className="form-grid">
             <div className="input-field">
               <label htmlFor="name">Full Name</label>
-              <input type="text" name="name" id="name" placeholder="John Doe" value={profileData.name} onChange={handleChange} required />
+              <input type="text" name="name" id="name" placeholder="Enter your full name" value={profileData.name} onChange={handleChange} required />
             </div>
 
             <div className="input-field">
               <label htmlFor="age">Age</label>
-              <input type="number" name="age" id="age" placeholder="25" value={profileData.age} onChange={handleChange} required />
+              <input type="number" name="age" id="age" placeholder="Enter your age" value={profileData.age} onChange={handleChange} required />
             </div>
 
             <div className="input-field">
@@ -109,7 +109,7 @@ const Home = () => {
 
             <div className="input-field">
               <label htmlFor="hobby">Hobby</label>
-              <input type="text" name="hobby" id="hobby" placeholder="Photography" value={profileData.hobby} onChange={handleChange} required />
+              <input type="text" name="hobby" id="hobby" placeholder="Enter in comma seperated values" value={profileData.hobby} onChange={handleChange} required />
             </div>
           </div>
 
