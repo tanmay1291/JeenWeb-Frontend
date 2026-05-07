@@ -200,6 +200,88 @@ button:disabled {
   color: white;
 }
 
+.hobby-badge {
+  display: inline-block;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--primary-color);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.hobby-group {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hobby-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.hobby-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.hobby-checkbox:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.hobby-checkbox input {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  background: var(--input-bg);
+}
+
+.hobby-checkbox input:checked + .checkbox-custom {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.hobby-checkbox input:checked + .checkbox-custom::after {
+  content: "✓";
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.hobby-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.hobby-checkbox input:checked ~ .hobby-label {
+  color: var(--text-primary);
+}
+
+
 @media (max-width: 768px) {
   body { padding: 1rem; }
   .form-grid { grid-template-columns: 1fr; }

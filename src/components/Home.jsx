@@ -10,7 +10,7 @@ const Home = () => {
     age: "",
     dob: "",
     gender: "",
-    hobby: ""
+    hobby: []
   })
   const [profiles, setProfiles] = useState([])
   const [loading, setLoading] = useState(false)
@@ -42,6 +42,20 @@ const Home = () => {
     setProfileData({ ...profileData, [e.target.name]: e.target.value })
   }
 
+  const handleHobbyChange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setProfileData({ ...profileData, hobby: [...profileData.hobby, value] });
+    } else {
+      setProfileData({ ...profileData, hobby: profileData.hobby.filter(h => h !== value) });
+    }
+  }
+
+  const hobbyList = [
+    "Reading", "Gaming", "Traveling", "Music", 
+    "Photography", "Sports", "Coding", "Cooking"
+  ]
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
@@ -57,7 +71,7 @@ const Home = () => {
       const data = await response.json()
       if (data.success) {
         alert("Profile added successfully!")
-        setProfileData({ name: "", age: "", dob: "", gender: "", hobby: "" })
+        setProfileData({ name: "", age: "", dob: "", gender: "", hobby: [] })
         fetchProfiles()
       } else {
         alert(data.message || "Failed to add profile")
@@ -80,7 +94,6 @@ const Home = () => {
         <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: '#f8fafc' }}>Add New Profile</h2>
         <form onSubmit={handleSubmit}>
 
-          
           <div className="form-grid">
             <div className="input-field">
               <label htmlFor="name">Full Name</label>
@@ -106,20 +119,34 @@ const Home = () => {
                 <option value="other">Other</option>
               </select>
             </div>
+          </div>
 
-            <div className="input-field">
-              <label htmlFor="hobby">Hobby</label>
-              <input type="text" name="hobby" id="hobby" placeholder="Enter in comma seperated values" value={profileData.hobby} onChange={handleChange} required />
+          <div className="hobby-group">
+            <label>Select Hobbies</label>
+            <div className="hobby-options">
+              {hobbyList.map((hobby) => (
+                <label key={hobby} className="hobby-checkbox">
+                  <input 
+                    type="checkbox" 
+                    value={hobby} 
+                    checked={profileData.hobby.includes(hobby)}
+                    onChange={handleHobbyChange}
+                  />
+                  <div className="checkbox-custom"></div>
+                  <span className="hobby-label">{hobby}</span>
+                </label>
+              ))}
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1.5rem' }}>
             <button type="submit" disabled={loading} style={{ width: '200px' }}>
               {loading ? "Adding..." : "Add Profile"}
             </button>
           </div>
         </form>
       </section>
+
 
       <section className="table-container">
         <div style={{ padding: '1.5rem 2rem', borderBottom: '1px solid rgba(255, 255, 255, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -146,12 +173,23 @@ const Home = () => {
                     <td>{profile.age}</td>
                     <td>{new Date(profile.dob).toLocaleDateString('en-GB')}</td>
                     <td style={{ textTransform: 'capitalize' }}>{profile.gender}</td>
-                    <td>{profile.hobby}</td>
+                    <td>
+                      {Array.isArray(profile.hobby) 
+                        ? profile.hobby.map((h, i) => (
+                            <span key={i} className="hobby-badge">
+                              {h}
+                            </span>
+                          ))
+                        : profile.hobby
+                      }
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+
+
         ) : (
           <div className="no-data">
             <p>No profiles found. Start by adding one above!</p>
