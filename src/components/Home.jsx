@@ -38,9 +38,10 @@ const Home = () => {
     navigate("/")
   }
 
-  const handleChange = (e) => {
-    setProfileData({ ...profileData, [e.target.name]: e.target.value })
-  }
+  const handleName = (e) => setProfileData({ ...profileData, name: e.target.value });
+  const handleAge = (e) => setProfileData({ ...profileData, age: e.target.value });
+  const handleDob = (e) => setProfileData({ ...profileData, dob: e.target.value });
+  const handleGender = (e) => setProfileData({ ...profileData, gender: e.target.value });
 
   const handleHobbyChange = (e) => {
     const { value, checked } = e.target;
@@ -52,8 +53,7 @@ const Home = () => {
   }
 
   const hobbyList = [
-    "Reading", "Gaming", "Traveling", "Music", 
-    "Photography", "Sports", "Coding", "Cooking"
+    "Reading", "Gaming", "Traveling", "Music", "Photography", "Sports", "Coding", "Cooking"
   ]
 
   const handleSubmit = async (e) => {
@@ -91,28 +91,28 @@ const Home = () => {
       </header>
 
       <section className="card">
-        <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: '#f8fafc' }}>Add New Profile</h2>
+        <h2 className="section-title">Add New Profile</h2>
         <form onSubmit={handleSubmit}>
 
           <div className="form-grid">
             <div className="input-field">
               <label htmlFor="name">Full Name</label>
-              <input type="text" name="name" id="name" placeholder="Enter your full name" value={profileData.name} onChange={handleChange} required />
+              <input type="text" name="name" id="name" placeholder="Enter your full name" value={profileData.name} onChange={handleName} required />
             </div>
 
             <div className="input-field">
               <label htmlFor="age">Age</label>
-              <input type="number" name="age" id="age" placeholder="Enter your age" value={profileData.age} onChange={handleChange} required />
+              <input type="number" name="age" id="age" placeholder="Enter your age" value={profileData.age} onChange={handleAge} required />
             </div>
 
             <div className="input-field">
               <label htmlFor="dob">Date of Birth</label>
-              <input type="date" name="dob" id="dob" value={profileData.dob} onChange={handleChange} required />
+              <input type="date" name="dob" id="dob" value={profileData.dob} onChange={handleDob} required />
             </div>
 
             <div className="input-field">
               <label htmlFor="gender">Gender</label>
-              <select name="gender" id="gender" value={profileData.gender} onChange={handleChange} required>
+              <select name="gender" id="gender" value={profileData.gender} onChange={handleGender} required>
                 <option value="">Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -121,16 +121,14 @@ const Home = () => {
             </div>
           </div>
 
+
           <div className="hobby-group">
             <label>Select Hobbies</label>
             <div className="hobby-options">
               {hobbyList.map((hobby) => (
                 <label key={hobby} className="hobby-checkbox">
                   <input 
-                    type="checkbox" 
-                    value={hobby} 
-                    checked={profileData.hobby.includes(hobby)}
-                    onChange={handleHobbyChange}
+                    type="checkbox" value={hobby} checked={profileData.hobby.includes(hobby)} onChange={handleHobbyChange}
                   />
                   <div className="checkbox-custom"></div>
                   <span className="hobby-label">{hobby}</span>
@@ -139,8 +137,8 @@ const Home = () => {
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1.5rem' }}>
-            <button type="submit" disabled={loading} style={{ width: '200px' }}>
+          <div className="form-actions">
+            <button type="submit" disabled={loading} className="submit-btn-fixed">
               {loading ? "Adding..." : "Add Profile"}
             </button>
           </div>
@@ -149,13 +147,13 @@ const Home = () => {
 
 
       <section className="table-container">
-        <div style={{ padding: '1.5rem 2rem', borderBottom: '1px solid rgba(255, 255, 255, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h2 style={{ fontSize: '1.25rem', color: '#f8fafc', margin: 0 }}>Your Profiles</h2>
-          <span style={{ fontSize: '0.875rem', color: '#94a3b8' }}>{profiles.length} Total</span>
+        <div className="table-header">
+          <h2 className="section-title">Your Profiles</h2>
+          <span className="table-total">{profiles.length} Total</span>
         </div>
         
         {profiles.length > 0 ? (
-          <div style={{ overflowX: 'auto' }}>
+          <div className="table-wrapper">
             <table>
               <thead>
                 <tr>
@@ -169,10 +167,10 @@ const Home = () => {
               <tbody>
                 {profiles.map((profile, index) => (
                   <tr key={index}>
-                    <td style={{ fontWeight: 600 }}>{profile.name}</td>
+                    <td className="text-bold">{profile.name}</td>
                     <td>{profile.age}</td>
                     <td>{new Date(profile.dob).toLocaleDateString('en-GB')}</td>
-                    <td style={{ textTransform: 'capitalize' }}>{profile.gender}</td>
+                    <td className="text-capitalize">{profile.gender}</td>
                     <td>
                       {Array.isArray(profile.hobby) 
                         ? profile.hobby.map((h, i) => (

@@ -46,28 +46,12 @@ const Login = () => {
 
           <div className="form-group">
             <label className="form-group__label" htmlFor="email">Email</label>
-            <input 
-              className="form-group__input"
-              type="email" 
-              name="email" 
-              id="email" 
-              placeholder="Enter email" 
-              onChange={(e) => setemail(e.target.value)} 
-              required 
-            />
+            <input className="form-group__input" type="email" name="email" id="email" placeholder="Enter email" onChange={(e) => setemail(e.target.value)} required />
           </div>
 
           <div className="form-group">
             <label className="form-group__label" htmlFor="password">Password</label>
-            <input 
-              className="form-group__input"
-              type="password" 
-              name="password" 
-              id="password" 
-              placeholder="Enter password" 
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
-            />
+            <input className="form-group__input" type="password" name="password" id="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} required />
           </div>
 
           <button className="btn-primary" type="submit" disabled={loading}>

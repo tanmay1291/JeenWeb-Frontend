@@ -48,43 +48,18 @@ const Register = () => {
           <div className="form-group">
             <label className="form-group__label" htmlFor="username">Username</label>
             <input 
-              className="form-group__input"
-              type="text" 
-              id="username" 
-              name="username" 
-              placeholder="Enter username" 
-              value={username} 
-              onChange={(e) => setUsername(e.target.value)} 
-              required 
+              className="form-group__input" type="text" id="username" name="username" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} required 
             />
           </div>
 
           <div className="form-group">
             <label className="form-group__label" htmlFor="email">Email</label>
-            <input 
-              className="form-group__input"
-              type="email" 
-              id="email" 
-              name="email" 
-              placeholder="Enter email" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
-              required 
-            />
+            <input className="form-group__input" type="email" id="email" name="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           </div>
 
           <div className="form-group">
             <label className="form-group__label" htmlFor="password">Password</label>
-            <input 
-              className="form-group__input"
-              type="password" 
-              id="password" 
-              name="password" 
-              placeholder="Enter password" 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
-            />
+            <input className="form-group__input" type="password" id="password" name="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           </div>
 
           <button className="btn-primary" type="submit" disabled={loading}>

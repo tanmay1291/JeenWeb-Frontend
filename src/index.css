@@ -281,6 +281,52 @@ button:disabled {
   color: var(--text-primary);
 }
 
+/* New Utility and Semantic Classes */
+.section-title {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.table-header .section-title {
+  margin-bottom: 0;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.submit-btn-fixed {
+  width: 200px;
+}
+
+.table-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-total {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
 
 @media (max-width: 768px) {
   body { padding: 1rem; }
