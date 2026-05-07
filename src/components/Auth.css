@@ -84,13 +84,4 @@
   margin-left: 0.25rem;
 }
 
-.alert-error {
-  background: rgba(239, 68, 68, 0.1);
-  color: #f87171;
-  padding: 0.875rem;
-  border-radius: 0.75rem;
-  font-size: 0.875rem;
-  text-align: center;
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  margin-bottom: 0.5rem;
-}
+
